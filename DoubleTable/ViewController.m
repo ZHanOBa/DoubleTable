@@ -30,7 +30,7 @@
 -(UITableView *)leftTable{
     
     if (!_leftTable) {
-        _leftTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth / 3.0, kHeight) style:(UITableViewStyleGrouped)];
+        _leftTable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kWidth / 3.0, kHeight) style:(UITableViewStylePlain)];
         _leftTable.delegate = self;
         _leftTable.dataSource = self;
         [self.view addSubview:_leftTable];
@@ -41,7 +41,7 @@
 -(UITableView *)rightTable{
     
     if (!_rightTable) {
-        _rightTable = [[UITableView alloc]initWithFrame:CGRectMake(kWidth / 3.0, 64, kWidth / 3.0 * 2, kHeight - 64) style:(UITableViewStyleGrouped)];
+        _rightTable = [[UITableView alloc]initWithFrame:CGRectMake(kWidth / 3.0, 64, kWidth / 3.0 * 2, kHeight - 64) style:(UITableViewStylePlain)];
         _rightTable.delegate = self;
         _rightTable.dataSource = self;
         [self.view addSubview:_rightTable];
@@ -175,7 +175,6 @@
     if (scrollView == _rightTable) {
 
         NSIndexPath * indexPath = [_rightTable indexPathForRowAtPoint:scrollView.contentOffset];
-        NSLog(@"%@",indexPath);
         _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:indexPath.section];
         [_leftTable reloadData];
         [_leftTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
