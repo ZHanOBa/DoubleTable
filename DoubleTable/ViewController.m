@@ -173,24 +173,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     if (scrollView == _rightTable) {
-        
-        /*
-         NSIndexPath * indexPath = [_rightTable indexPathForRowAtPoint:scrollView.contentOffset];
-         NSLog(@"%@",indexPath);
-         _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:indexPath.section];
-         [_leftTable reloadData];
-         [_leftTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
-         */
-        
-        
-        if (scrollView == _rightTable) {
-            NSArray * array = [_rightTable visibleCells];
-            NSIndexPath * indexPath = [_rightTable indexPathForCell:array.firstObject];
-            NSLog(@"滑到了第 %ld 组 %ld个",indexPath.section, indexPath.row);
-            _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:indexPath.section];
-            [_leftTable reloadData];
-            [_leftTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
-        }
+
+        NSIndexPath * indexPath = [_rightTable indexPathForRowAtPoint:scrollView.contentOffset];
+        NSLog(@"%@",indexPath);
+        _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:indexPath.section];
+        [_leftTable reloadData];
+        [_leftTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }
 }
 
