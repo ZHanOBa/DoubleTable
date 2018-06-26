@@ -175,9 +175,10 @@
     if (scrollView == _rightTable) {
 
         NSIndexPath * indexPath = [_rightTable indexPathForRowAtPoint:scrollView.contentOffset];
+        NSLog(@"%@",indexPath);
         _currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:indexPath.section];
         [_leftTable reloadData];
-        [_leftTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        [_leftTable scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }
 }
 
